@@ -1,46 +1,78 @@
-function value(){
-
-    const button = document.querySelectorAll(".btn");
-    const parrentDom = document.querySelectorAll('.body button');
-    const display = document.getElementById('display');    
-    const opp = document.querySelectorAll('.opperator');
-
-    let buttonValue;
-    let displayValue;
-    let displayValue2;
-    let result;
-
-    parrentDom.forEach((button) => {               
-
-        if(button.matches('.opperator')){
-            
-        };
-
-        button.addEventListener('click',function(){
-            buttonValue = button.value;
-            //print in display
-            displayValue = display.value + buttonValue;
-            display.value = displayValue; 
-            
-        })
-    });
-    
-    opp.forEach((opp) => {
-        opp.addEventListener('click',function(){
-
-            if(opp.textContent == "+"){                
-                clear();
-                displayValue2 = display.value;
-                console.log(displayValue2);
-            }        
-
-        })
-    });
-
+function getHistory(){
+	return document.getElementById("history-value").innerText;
 }
-
-function clear(){
-    display.value = "";
+function printHistory(num){
+	document.getElementById("history-value").innerText=num;
 }
-
-value();
+function getOutput(){
+	return document.getElementById("output-value").innerText;
+}
+function printOutput(num){
+	if(num==""){
+		document.getElementById("output-value").innerText=num;
+	}
+	else{
+		document.getElementById("output-value").innerText=getFormattedNumber(num);
+	}	
+}
+function getFormattedNumber(num){
+	if(num=="-"){
+		return "";
+	}
+	var n = Number(num);
+	var value = n.toLocaleString("en");
+	return value;
+}
+function reverseNumberFormat(num){
+	return Number(num.replace(/,/g,''));
+}
+var operator = document.getElementsByClassName("operator");
+for(var i =0;i<operator.length;i++){
+	operator[i].addEventListener('click',function(){
+		if(this.id=="clear"){
+			printHistory("");
+			printOutput("");
+		}
+		else if(this.id=="backspace"){
+			var output=reverseNumberFormat(getOutput()).toString();
+			if(output){//if output has a value
+				output= output.substr(0,output.length-1);
+				printOutput(output);
+			}
+		}
+		else{
+			var output=getOutput();
+			var history=getHistory();
+			if(output==""&&history!=""){
+				if(isNaN(history[history.length-1])){
+					history= history.substr(0,history.length-1);
+				}
+			}
+			if(output!="" || history!=""){
+				output= output==""?output:reverseNumberFormat(output);
+				history=history+output;
+				if(this.id=="="){
+					var result=eval(history);
+					printOutput(result);
+					printHistory("");
+				}
+				else{
+					history=history+this.id;
+					printHistory(history);
+					printOutput("");
+				}
+			}
+		}
+		
+	});
+}
+var number = document.getElementsByClassName("number");
+for(var i =0;i<number.length;i++){
+	number[i].addEventListener('click',function(){
+		var output=reverseNumberFormat(getOutput());
+		if(output!=NaN){ //if output is a number
+			output=output+this.id;
+			printOutput(output);
+		}
+	});
+}

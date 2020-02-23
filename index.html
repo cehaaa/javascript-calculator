@@ -1,78 +1,44 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
-    <title>Document</title>
-</head>
-<body>
-    
-    <table class="table">
-        <tr>
-            <td colspan="4">
-                <input type="text" class="display" id="display">
-            </td>
-        </tr>
-        <tbody id="parentDom" class="body">
-            <tr>
-                <td>
-                    <button class="btn" value="1">1</button>
-                </td>
-                <td>
-                    <button class="btn" value="2">2</button>
-                </td>
-                <td>
-                    <button class="btn" value="3">3</button>
-                </td>            
-                <td>
-                    <button class="btn opperator" >+</button>
-                </td>            
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn" value="4">4</button>
-                </td>
-                <td>
-                    <button class="btn" value="5">5</button>
-                </td>
-                <td>
-                    <button class="btn" value="6">6</button>
-                </td>            
-                <td>
-                    <button class="btn opperator" >-</button>
-                </td>            
-            </tr>
-            <tr>
-                <td>
-                    <button class="btn" value="7">7</button>
-                </td>
-                <td>
-                    <button class="btn" value="8">8</button>
-                </td>
-                <td>
-                    <button class="btn" value="9">9</button>
-                </td>            
-                <td>
-                    <button class="btn opperator">x</button>
-                </td>            
-            </tr>
-            <tr>
-                <td colspan="2">
-                    <button class="btn" style="width: 105copx;" value="0">0</button>
-                </td>
-                <td>
-                    <button class="btn opperator" >=</button>
-                </td>
-                <td>
-                    <button class="btn opperator" >/</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-
-</body>
-
-<script src="script.js"></script>
-
+<html>
+	<head>
+		<link rel="stylesheet" type="text/css" href="style.css">
+		
+		<title>A simple calculator</title>
+	</head>
+	<body>
+		<div id="container">
+			<div id="calculator">
+				<div id="result">
+					<div id="history">
+						<p id="history-value"></p>
+					</div>
+					<div id="output">
+						<p id="output-value"></p>
+					</div>
+				</div>
+				<div id="keyboard">
+					<button class="operator" id="clear">C</button>
+					<button class="operator" id="backspace">CE</button>
+					<button class="operator" id="%">%</button>
+					<button class="operator" id="/">&#247;</button>
+					<button class="number" id="7">7</button>
+					<button class="number" id="8">8</button>
+					<button class="number" id="9">9</button>
+					<button class="operator" id="*">&times;</button>
+					<button class="number" id="4">4</button>
+					<button class="number" id="5">5</button>
+					<button class="number" id="6">6</button>
+					<button class="operator" id="-">-</button>
+					<button class="number" id="1">1</button>
+					<button class="number" id="2">2</button>
+					<button class="number" id="3">3</button>
+					<button class="operator" id="+">+</button>
+					<button class="empty" id="empty"></button>
+					<button class="number" id="0">0</button>
+					<button class="empty" id="empty"></button>
+					<button class="operator" id="=">=</button>
+				</div>
+			</div>
+		</div>
+		<script src="script.js"></script>
+	</body>
 </html>
